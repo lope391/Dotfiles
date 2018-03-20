@@ -1,0 +1,260 @@
+;: vim:ft=dosini
+;: set syn=dosini
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[global/wm]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+margin-top = 0
+margin-bottom = 0
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[colors]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+darkgray = ${xrdb:color8}
+orange = ${xrdb:color9}
+white = #ebdbb2
+gray = #585858
+black = #090909
+red = #c795ae
+blue = #95aec7
+yellow = #c7ae95
+green = #aec795
+background-alt = #4e4e4e
+foreground-alt = #4e4e4e
+primary = #1f222d
+secondary = #FF6200
+alert = #fb4934
+background = #222
+foreground = #eee
+linecolor = #fba922
+bordercolor = #333
+accent = #e60053
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[bar/bar]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+width = 100%
+height = 24
+fixed-center = true
+
+locale = en_US.UTF-8
+
+monitor = eDP-1-1
+
+enable-ipc = true
+
+padding-left = 0
+padding-right = 0
+
+module-margin-left = 0
+module-margin-right = 0
+
+modules-right = wifi volume filesystem cpu memory battery  
+modules-center = date
+modules-left = i3
+
+background = #00222222
+foreground = ${colors.foreground}
+
+underline-size = 2
+underline-color = ${colors.white}
+
+tray-detached = false
+tray-position = left
+tray-offset-x = 0
+tray-offset-y = 0
+tray-transparent = true
+tray-scale = 1.0
+
+font-0 = "monospace:size=10;2"
+font-1 = "FontAwesome:size=12;2"
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/i3]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = true
+strip-wsnumbers = true
+
+label-mode = %mode%
+label-mode-background = ${colors.accent}
+
+label-focused = %name%
+label-focused-background = #383838
+label-focused-foreground = #fff
+label-focused-overline = $cc333333
+label-focused-underline = $cc333333
+label-focused-padding = 1
+label-focused-margin-left = 1
+
+label-unfoxued = %name%
+label-unfocused-padding = 1
+
+label-urgent = %icon%!
+label-urgent-background = #bd2c40
+label-urgent-padding = 1
+
+label-empty = %icon%
+label-empty-foreground = #444
+label-empty-padding = 1
+
+label-visible = %name%
+lable-visible-padding = 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/wifi]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+type = internal/network
+interface = wlp59s0
+interval = 3.0
+format-connected = <ramp-signal> <label-connected>
+format-connected-prefix-foreground = #666
+label-connected = "%essid% %signal% %"
+
+ramp-signal-0 = " "
+ramp-signal-1 = " "
+ramp-signal-2 = " "
+ramp-signal-0-foreground = ${colors.red}
+ramp-signal-1-foreground = #fff
+ramp-signal-2-foreground = #55aa55
+lable-connected-padding = 2
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;[module/xbacklight]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;type = internal/xbacklight
+;format = <ramp> <label>
+;label = %percentage%%
+;ramp-0 = 
+;ramp-1 = 
+;ramp-2 = 
+;ramp-foreground = #666
+;label-foreground = ${root.foreground}
+;format-padding = 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/filesystem]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+type = internal/fs
+interval = 25
+
+mount-0 = /
+format-mounted-prefix = " "
+format-mounted-foreground = #fff
+label-mounted = %percentage_used%%
+label-mounted-foreground = ${root.foreground}
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = #fff
+format-mounted-padding = 1
+format-unmounted-padding = 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/date]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+type = internal/date
+label =  %{F#fff} %{F-} %date%  %{F#e60053}%{F-} %time%
+date = %Y-%m-%d
+time = %H:%M
+interval = 5
+
+format-foreground = ${colors.foreground}
+format-underline = $cc333333
+format-padding = 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/volume]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+type = internal/pulseaudio
+
+master-soundcard = default
+speaker-soundcard = deafault
+headphone-soundcard = default
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = 
+format-muted-foreground = #fff
+label-muted = " Muted"
+label-muted-foreground = #e60053
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-foreground = #fff
+
+format-muted-padding = 1
+format-volume-padding = 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/cpu]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #fff
+;format-underline = #f90000
+label = %percentage%%
+label-foreground = ${root.foreground}
+format-padding = 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/memory]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+type = internal/memory
+interval = 3
+format-prefix = " "
+format-prefix-foreground = #fff
+label = %percentage_used%%
+label-foreground = ${root.foreground}
+format-padding = 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/separator]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+type = custom/text
+content = |
+content-foreground = #4e4e4e
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[module/battery]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+type = internal/battery
+full-at = 100
+time-format = %H:%M
+
+format-charging = <animation-charging> <label-charging>
+label-charging = %percentage%% 
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %percentage%%
+
+format-full = <label-full>
+format-full-prefix =  
+format-full-prefix-foreground = #55aa55
+
+ramp-capacity-0 =  
+ramp-capacity-1 =  
+ramp-capacity-2 =   
+ramp-capacity-0-foreground = ${colors.red}
+ramp-capacity-1-foreground = #fff
+ramp-capacity-2-foreground = #55aa55
+
+animation-charging-0 =  
+animation-charging-1 =   
+animation-charging-2 =  
+animation-charging-foreground = #55aa55
+animation-charging-framerate = 750
+
+format-full-padding = 1
+format-charging-padding = 1
+format-discharging-padding = 1
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+[settings]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+screenchange-reload = true
+
