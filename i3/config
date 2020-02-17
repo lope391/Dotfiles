@@ -77,7 +77,7 @@ bindsym $mod+Shift+q kill
 # Application Launcher
 ###################################
 #bindsym $mod+d exec dmenu_run
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec rofi -show run -theme onedark2
 
 ###################################
 # Change Window Focus
@@ -203,6 +203,8 @@ mode "$mode_system" {
 # Run Feh Background Config
 ###################################
 exec --no-startup-id exec bash $HOME/.fehbg
+#First boot run command:
+#feh --bg-fill [img-location]
 
 ###################################
 # Tray Apps
