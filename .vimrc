@@ -61,9 +61,9 @@ set showmatch
 
 "Defaut Tab Size to 4 Spaces
 "set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 
 "Word Processor Mode
 func! WordProcessorMode()
