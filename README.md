@@ -13,6 +13,8 @@ Basic config files for my personal linux rice.
 * [Polybar](https://github.com/polybar/polybar)
 * Terminator
 	* ZSH
+		* [Autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+		* [Syntax Highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)	
 	* [Oh-My-Zsh](https://ohmyz.sh/) -- [Spaceship](https://denysdovhan.com/spaceship-prompt/)
 * Vim
 	* [Vundle](https://github.com/VundleVim/Vundle.vim)
